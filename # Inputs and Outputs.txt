@@ -1,0 +1,5 @@
+# Inputs and Outputs
+	# Get details of student as well as awards when input = {Register Number or Name}
+	# Get details about students and awards when inputs = {awardName, institution, month and year, team/individual,
+															class, section, eventName, Availability}
+	# Get the details about institution when inputs = {institutionName, awardName, address}
