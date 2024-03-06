@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitization</title>
+    <style>
+        body {
+            padding: 0 20px;
+            background-color: rgb(228, 255, 242);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #99ead3;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #78ed6e;
+        }
+        .bordered-box {
+            border: 2px solid #000;
+            text-align: center;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            background-color: #b4ffb3;
+        }
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+            margin-right: 30px;
+            display: inline-block;
+            width: calc(30.00% - 10px); 
+            box-sizing: border-box; /* Added to include padding and border in the width calculation */
+        }
+        .input-container input,
+        .input-container select {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #2196F3;
+            outline: none;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .input-container select {
+            width: calc(100% - 10px);
+        }
+        .input-container label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #777;
+            pointer-events: none;
+            transition: 0.3s ease all;
+        }
+        .input-container input:focus + label,
+        .input-container input:valid + label {
+            top: -15px;
+            left: 5px;
+            font-size: 12px;
+            color: #2196F3;
+        }
+        .input-container select:focus + label,
+        .input-container select:valid + label {
+            top: -15px;
+            left: 5px;
+            font-size: 12px;
+            color: #2196F3;
+        }
+        .search-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .search-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="bordered-box">
+        <p>Latest Achivement 1</p>
+        <p>Latest Achivement 2</p>
+    </div>
+    <div class="input-container">
+        <input type="text" required>
+        <label for="">Parameter 1</label>
+    </div>
+    <div class="input-container">
+        <input type="text" required>
+        <label for="">Parameter 2</label>
+    </div>
+    <div class="input-container">
+        <input type="text" required>
+        <label for="">Parameter 3</label>
+    </div>
+    <div class="input-container">
+        <select required>
+            <option value=""></option>
+            <option value="value1">Value 1</option>
+            <option value="value2">Value 2</option>
+            <option value="value3">Value 3</option>
+        </select>
+        <label for="">Parameter 4</label>
+    </div>
+    <div class="input-container">
+        <select required>
+            <option value=""></option>
+            <option value="value1">Value 1</option>
+            <option value="value2">Value 2</option>
+            <option value="value3">Value 3</option>
+        </select>
+        <label for="">Parameter 5</label>
+    </div>
+    <div class="input-container">
+        <select required>
+            <option value=""></option>
+            <option value="value1">Value 1</option>
+            <option value="value2">Value 2</option>
+            <option value="value3">Value 3</option>
+        </select>
+        <label for="">Parameter 6</label>
+    </div>
+    <button class="search-button">Search</button>
+    <centre>
+        <table>
+            <thead>
+                <tr>
+                    <th>Registration Number</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Awards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3121</td>
+                    <td>Person A</td>
+                    <td>18</td>
+                    <td>SSN Trophy</td>
+                </tr>
+                <tr>
+                    <td>3122</td>
+                    <td>Person B</td>
+                    <td>17</td>
+                    <td>Hackathon</td>
+                </tr>
+                <tr>
+                    <td>3123</td>
+                    <td>Person c</td>
+                    <td>19</td>
+                    <td>SIH</td>
+                </tr>
+                <tr>
+                    <td>3124</td>
+                    <td>Person D</td>
+                    <td>18</td>
+                    <td>code fest</td>
+                </tr>
+            </tbody>
+        </table>
+    </centre>
+
+</body>
+</html>
