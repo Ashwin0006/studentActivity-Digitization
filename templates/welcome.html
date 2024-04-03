@@ -49,8 +49,8 @@
     <div class="welcome-message">
     </div>
     <div class="button-container">
-        <a class="redirect-button" href="front.html">View student extracurricular details</a>
-        <a class="redirect-button" href="student.html">Enter new student extracurricular details</a>
+        <button id="redirect-button" type="button" onclick="window.location.href = '{{ url_for('front')}}'" class="button">View student extracurricular details</button>
+        <button id="redirect-button" type="button" onclick="window.location.href = '{{ url_for('student')}}'" class="button">Enter new student extracurricular details</button>
     </div>
 </body>
 </html>
