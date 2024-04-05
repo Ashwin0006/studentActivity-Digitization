@@ -7,12 +7,15 @@
     <style>
         body {
             padding: 0 20px;
-            background-color: rgb(228, 246, 255);
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            background-color: #ffffff;
         }
         th, td {
             border: 1px solid #99ead3;
@@ -20,15 +23,17 @@
             padding: 8px;
         }
         th {
-            background-color: #6296d3;
+            background-color: #0D4BA0;
+            color: white;
         }
         .bordered-box {
-            border: 2px solid #000;
+            border: 2px solid #0D4BA0;
             text-align: center;
             padding: 20px;
             margin: 50px auto;
             border-radius: 10px;
-            background-color: #6296d3;
+            background-color: #0D4BA0;
+            color: white;
         }
         .input-container {
             position: relative;
@@ -43,7 +48,7 @@
             width: calc(100% - 10px);
             padding: 10px;
             border: none;
-            border-bottom: 2px solid #2196F3;
+            border-bottom: 2px solid #0D4BA0;
             outline: none;
             font-size: 16px;
             margin-right: 10px;
@@ -64,17 +69,17 @@
             top: -15px;
             left: 5px;
             font-size: 12px;
-            color: #2196F3;
+            color: #0D4BA0;
         }
         .input-container select:focus + label,
         .input-container select:valid + label {
             top: -15px;
             left: 5px;
             font-size: 12px;
-            color: #2196F3;
+            color: #0D4BA0;
         }
         .search-button {
-            background-color: #6296d3;
+            background-color: #0D4BA0;
             color: white;
             padding: 14px 20px;
             border: none;
@@ -84,9 +89,11 @@
             display: block;
             margin: auto;
             margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
         }
         .search-button:hover {
-            background-color: #6296d3;
+            background-color: #06376F;
         }
     </style>
 </head>
@@ -169,6 +176,7 @@
                     <td>Person C</td>
                     <td>4</td>
                     <td>C</td>
+
                     <td>3123</td>
                     <td>SIH</td>
                     <td>Best Innovation</td>

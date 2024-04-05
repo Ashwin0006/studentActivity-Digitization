@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSN Student Extracurricular Activities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+
+        #top-bar {
+            background-color: #0D4BA0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        #home-link {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        #logo {
+            width: 120px;
+            height: 75px;
+            margin-right: 20px;
+        }
+
+        h1 {
+            color: #0D4BA0;
+            margin-top: 50px;
+        }
+
+        .welcome-message {
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .redirect-button {
+            background-color: #0D4BA0;
+            color: #ffffff;
+            padding: 20px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            border: none;
+            font-weight: bold;
+        }
+
+        .redirect-button:hover {
+            background-color: #06376F;
+        }
+    </style>
+</head>
+<body>
+    <div id="top-bar">
+        <div id="home-link"><a href="{{ url_for('home') }}">Home</a></div>
+        <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
+    </div>
+    <h1>SSN Student Extracurricular Activities</h1>
+    <div class="welcome-message"></div>
+    <div class="button-container">
+        <button type="button" onclick="window.location.href = '{{ url_for('student_login')}}'" class="redirect-button">Student Login</button>
+        <button type="button" onclick="window.location.href = '{{ url_for('faculty_login')}}'" class="redirect-button">Faculty Login</button>
+        <button type="button" onclick="window.location.href = '{{ url_for('admin_login')}}'" class="redirect-button">Admin Login</button>
+    </div>
+</body>
+</html>
