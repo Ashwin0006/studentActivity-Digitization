@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .appbar {
+            background-color: #2a1cf0;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            height: fit-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            margin-left: auto;
+        }
+
+        .app-title {
+            margin: auto;
+            flex-grow: 1; 
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #b8f2ff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            border: 1px solid #000000;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: rgb(255, 150, 150);
+            border-color: #4CAF50;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+        
+        tr:hover {
+            background-color: #43ff88;
+        }
+
+        .header-row {
+            background-color: #4362ff; 
+        }
+
+        .header-row:hover {
+            background-color: #4362ff; 
+        }
+        
+        
+        td {
+            font-size: 14px;
+            color: #333;
+        }
+        
+
+        tbody tr:hover {
+            background-color: #88e3ff;
+        }
+        
+        thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        tfoot {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        thead th, tfoot th, tfoot td {
+            padding: 15px;
+        }
+        
+        thead th {
+            border-bottom: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="appbar">
+        <h1 class="app-title">Details of the Search</h1>
+        <div class="logo-container">
+            <img src="/static/ssn_logo_white.png" width="100" height="50">
+        </div>
+    </div>
+
+    <table border="1">
+        {% for row in table_data %}
+            <tr{% if loop.index == 1 %} class="header-row"{% endif %}>
+                {% for cell in row %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

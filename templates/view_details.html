@@ -7,7 +7,8 @@
     <style>
         body {
             padding: 0 20px;
-            background-color: #f5f5f5;
+            background-image: url(/static/ssn_fountain.png);
+            background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
         }
@@ -27,14 +28,17 @@
             color: white;
         }
         .bordered-box {
-            border: 2px solid #0D4BA0;
+            border: 2px solid #4655cc;
             text-align: center;
             padding: 20px;
             margin: 50px auto;
             border-radius: 10px;
-            background-color: #0D4BA0;
-            color: white;
+            background-color: rgba(56, 91, 249, 0.6); /* Adjust the alpha (opacity) value as needed */
+            color: rgb(252, 252, 252);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
+
         .input-container {
             position: relative;
             margin-bottom: 20px;
@@ -69,14 +73,14 @@
             top: -15px;
             left: 5px;
             font-size: 12px;
-            color: #0D4BA0;
+            color: #ffffff;
         }
         .input-container select:focus + label,
         .input-container select:valid + label {
             top: -15px;
             left: 5px;
             font-size: 12px;
-            color: #0D4BA0;
+            color: #ffffff;
         }
         .search-button {
             background-color: #0D4BA0;
@@ -98,97 +102,68 @@
     </style>
 </head>
 <body>
-    <div class="bordered-box">
-        <p>Latest Achievement 1</p>
-        <p>Latest Achievement 2</p>
-    </div>
-    <div class="input-container">
-        <input type="text" required>
-        <label for="">Name of Student</label>
-    </div>
-    <div class="input-container">
-        <input type="text" required>
-        <label for="">Register Number</label>
-    </div>
-    <div class="input-container">
-        <input type="text" required>
-        <label for="">Keyword</label>
-    </div>
-    <div class="input-container">
-        <select required>
-            <option value=""></option>
-            <option value="value1">1</option>
-            <option value="value2">2</option>
-            <option value="value3">3</option>
-            <option value="value4">4</option>
-        </select>
-        <label for="">Year</label>
-    </div>
-    <div class="input-container">
-        <select required>
-            <option value=""></option>
-            <option value="value1">A</option>
-            <option value="value2">B</option>
-            <option value="value3">C</option>
-        </select>
-        <label for="">Section</label>
-    </div>
-    <div class="input-container">
-        <select required>
-            <option value=""></option>
-            <option value="value1">Technical</option>
-            <option value="value2">Non-Technical</option>
-            <option value="value2">Sports</option>
-        </select>
-        <label for="">Category</label>
-    </div>
-    <button class="search-button">Search</button>
+    <form method="post" action="{{ url_for('search') }}">
+        <div class="bordered-box">
+            <p>{{ latest_1 }}</p>
+            <p>{{ latest_2 }}</p>
+        </div>
+        <div class="input-container">
+            <input type="text" id="student_name" name="student_name">
+            <label for="">Name of Student</label>
+        </div>
+        <div class="input-container">
+            <input type="text" id="award_name" name="award_name">
+            <label for="">Award Name</label>
+        </div>
+        <div class="input-container">
+            <input type="text" id="keyword" name="keyword">
+            <label for="">Keyword</label>
+        </div>
+        <div class="input-container">
+            <input type="text" id="year" name="year">
+            <label for="">Year</label>
+        </div>
+        <div class="input-container">
+            <select id="level" name="level">
+                <option value=""></option>
+                <option value="International">International</option>
+                <option value="State">State</option>
+                <option value="Inter-University">Inter-University</option>
+            </select>
+            <label for="">Competition Level</label>
+        </div>
+        <div class="input-container">
+            <select id="tech" name="tech">
+                <option value=""></option>
+                <option value="Tech">Technical</option>
+                <option value="Non Tech">Non-Technical</option>
+                <option value="value2">Sports</option>
+            </select>
+            <label for="">Category</label>
+        </div>
+        <button class="search-button" type="submit">Search</button>
+    </form>
     <center>
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Year</th>
-                    <th>Section</th>
-                    <th>Register Number</th>
+                    <th>Student Name</th>
+                    <th>Award Name</th>
                     <th>Event Name</th>
-                    <th>Prize Won</th>
+                    <th>Date</th>
+                    <th>Competition Level</th>
                 </tr>
             </thead>
             <tbody>
-                <tr onclick="window.location.href='blank.html';">
-                    <td>Person A</td>
-                    <td>1</td>
-                    <td>A</td>
-                    <td>3121</td>
-                    <td>SSN Trophy</td>
-                    <td>Gold Medal</td>
+                {% for row in data_rows %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
                 </tr>
-                <tr onclick="window.location.href='blank.html';">
-                    <td>Person B</td>
-                    <td>3</td>
-                    <td>B</td>
-                    <td>3122</td>
-                    <td>Hackathon</td>
-                    <td>1st Prize</td>
-                </tr>
-                <tr onclick="window.location.href='blank.html';">
-                    <td>Person C</td>
-                    <td>4</td>
-                    <td>C</td>
-
-                    <td>3123</td>
-                    <td>SIH</td>
-                    <td>Best Innovation</td>
-                </tr>
-                <tr onclick="window.location.href='blank.html';">
-                    <td>Person D</td>
-                    <td>2</td>
-                    <td>A</td>
-                    <td>3124</td>
-                    <td>Code Fest</td>
-                    <td>Certificate of Excellence</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </center>
