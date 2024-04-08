@@ -23,8 +23,8 @@ def view_details():
                    ORDER BY year desc
                    FETCH FIRST 2 ROWS ONLY""")
     data_latest = cursor.fetchall()
-    latest_1 = f"{data_latest[0][0]} has won {data_latest[0][1]} in the event {data_latest[0][2]} on {data_latest[0][3]} which is a {data_latest[0][4]} competition!"
-    latest_2 = f"{data_latest[1][0]} has won {data_latest[1][1]} in the event {data_latest[1][2]} on {data_latest[1][3]} which is a {data_latest[1][4]} competition!"
+    latest_1 = f"{data_latest[0][0]} has won {data_latest[0][1]} in the event {data_latest[0][2]} on {data_latest[0][3]}, {data_latest[0][4]} which is a {data_latest[0][5]} competition!"
+    latest_2 = f"{data_latest[1][0]} has won {data_latest[1][1]} in the event {data_latest[1][2]} on {data_latest[1][3]}, {data_latest[1][4]} which is a {data_latest[1][5]} competition!"
 
     cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
                    FROM data_awards 
