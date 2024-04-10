@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request, redirect
-import cx_Oracle
+import mysql.connector
 
 # Initialize the database!
-cx_Oracle.init_oracle_client(lib_dir=r"E:\Database\DB\dbhomeXE\bin")
-orcl_connec_str = 'system/ak@localhost:1521/XE'
-connection = cx_Oracle.connect(orcl_connec_str)
+db_config = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'Ash123',
+    'database': 'digitization',
+    'auth_plugin': 'mysql_native_password' 
+}
+connection = mysql.connector.connect(**db_config)
 cursor = connection.cursor()
 
 
@@ -18,19 +23,18 @@ def home():
 def view_details():
     # Latest Achievements!
     cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
-                   FROM data_awards
+                   FROM awards
                    WHERE year is not null 
                    ORDER BY year desc
-                   FETCH FIRST 2 ROWS ONLY""")
+                   LIMIT 2""")
     data_latest = cursor.fetchall()
     latest_1 = f"{data_latest[0][0]} has won {data_latest[0][1]} in the event {data_latest[0][2]} on {data_latest[0][3]}, {data_latest[0][4]} which is a {data_latest[0][5]} competition!"
     latest_2 = f"{data_latest[1][0]} has won {data_latest[1][1]} in the event {data_latest[1][2]} on {data_latest[1][3]}, {data_latest[1][4]} which is a {data_latest[1][5]} competition!"
 
     cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
-                   FROM data_awards 
-                   WHERE year is not null 
-                   ORDER BY year desc
-                   FETCH FIRST 10 ROWS ONLY""")
+                   FROM awards 
+                   ORDER BY year
+                   LIMIT 10""")
     data_acheivements = cursor.fetchall()
 
     return render_template("view_details.html", latest_1 = latest_1, latest_2 = latest_2, data_rows = data_acheivements)
@@ -47,21 +51,33 @@ def search():
     competition_level = data.get("level")
     tech = data.get("tech")
 
-    query = "SELECT * FROM data_awards WHERE 1=1"
-    if student_name:
-        query += f" AND student_name LIKE '%{student_name}%'"
-    if award_name:
-        query += f" AND award_name LIKE '%{award_name}%'"
+    
     if keyword:
-        query += f" AND keyword LIKE '%{keyword}%'"
-    if year:
-        query += f" AND year = {year}"
-    if competition_level:
-        query += f" AND competition_level LIKE '%{competition_level}%'"
-    if tech:
-        query += f" AND tech LIKE '%{tech}%'"
+        query = "SELECT * FROM awards WHERE 1=0"
+        query += f" OR student_name LIKE '%{keyword}%'"
+        query += f" OR award_name LIKE '%{keyword}%'"
+        query += f" OR tech LIKE '%{keyword}%'"
+        query += f" OR event_name LIKE '%{keyword}%'"
+        if isinstance(keyword, int):
+            query += f" OR event_name = {keyword}"
 
-    # print(query)
+    else:
+        query = "SELECT * FROM data_awards WHERE 1=1"
+        if student_name:
+            query += f" AND student_name LIKE '%{student_name}%'"
+        if award_name:
+            query += f" AND award_name LIKE '%{award_name}%'"
+        if year:
+            query += f" AND year = {year}"
+        if competition_level:
+            query += f" AND competition_level LIKE '%{competition_level}%'"
+        if tech:
+            if tech == "Non Tech":    
+                query += f" AND tech = 'Non Tech'"
+            else:
+                query += f" AND tech = 'Tech'"
+
+    print(query)
     cursor.execute(query)
     data_table = cursor.fetchall()
     data_table.insert(0, ("AWARD NAME", "TEAM/INDIVIDUAL", "STUDENT NAME", "LEVEL", "COMPETITION NAME", "MONTH", "YEAR", "PROOF", "AVAILABILITY", "CATEGORY"))
