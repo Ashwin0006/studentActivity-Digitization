@@ -104,16 +104,12 @@
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
     <div class="container">
-        <h2>Admin Login</h2>
-        <form action="{{url_for('admin_home')}}" method="post">
+        <h2>Enter Details to add Faculty</h2>
+        <form action="{{url_for('faculty_added')}}" method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
         </form>
-        <div class="minor-options">
-            <button onclick="window.location.href = '{{ url_for('faculty_login')}}'">Faculty Login</button> | 
-            <button onclick="window.location.href = '{{ url_for('student_login')}}'">Student Login</button>
-        </div>
     </div>
 </body>
 </html>

@@ -62,7 +62,7 @@ def search():
             query += f" OR event_name = {keyword}"
 
     else:
-        query = "SELECT * FROM data_awards WHERE 1=1"
+        query = "SELECT * FROM awards WHERE 1=1"
         if student_name:
             query += f" AND student_name LIKE '%{student_name}%'"
         if award_name:
@@ -114,5 +114,31 @@ def faculty_home():
     
     return render_template("error.html", error_message = "Invalid Login")
 
+@app.route("/admin_home", methods=["POST", "GET"])
+def admin_home():
+    cursor.execute("SELECT * FROM ADMIN_USERS")
+    data_admin = cursor.fetchall()
+
+    username = request.form["username"]
+    password = request.form["password"]
+
+    for data in data_admin:
+        if(data[0] == username and data[1] == password):
+            return render_template("admin_home.html")
+    return render_template("error.html", error_message = "Invalid Login")
+
+@app.route("/add_faculty", methods=['POST', 'GET'])
+def add_faculty():
+    return render_template("add_faculty.html")
+
+@app.route("/faculty_added", methods=["POST", "GET"])
+def faculty_added():
+    username = request.form["username"]
+    password = request.form["password"]
+
+    cursor.execute(f"INSERT INTO USERS VALUES ('{username}', '{password}')")
+    cursor.execute("commit")
+    return render_template("admin_home.html")
+    
 if __name__ == "__main__":
     app.run(debug=True)
