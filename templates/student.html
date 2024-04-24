@@ -43,14 +43,14 @@
 
         h2 {
             text-align: center;
-            margin-top: 100px;
+            margin-top: 120px;
             color: #0D4BA0;
         }
 
         form {
             max-width: 500px;
             width: 90%;
-            margin: 150px auto 50px;
+            margin: 25px auto 50px;
             background-color: #f0f6f9;
             padding: 2em;
             border-radius: 20px;
@@ -111,7 +111,7 @@
 </head>
 <body>
     <div id="top-bar">
-        <div id="home-link"><a href="#" style="color: white; text-decoration: none;">Home</a></div>
+        <div id="home-link"><a href="{{ url_for('home') }}">Home</a></div>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
     <h2>Student details</h2>

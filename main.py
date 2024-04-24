@@ -5,7 +5,7 @@ import mysql.connector
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'Ash123',
+    'password': 'mysql',
     'database': 'digitization',
     'auth_plugin': 'mysql_native_password' 
 }
