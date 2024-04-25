@@ -3,110 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-            color: #000000;
-        }
-
-        #top-bar {
-            background-color: #0D4BA0;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        #home-link {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 20px;
-        }
-
-        #logo {
-            width: 120px;
-            height: 75px;
-            margin-right: 20px;
-        }
-
-        h2 {
-            color: #0D4BA0;
-            margin-top: 50px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px;
-            margin: 100px auto;
-            background-color: #005ebc;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            background-color: #0D4BA0;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #06376F;
-        }
-
-        .minor-options {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .minor-options button {
-            background-color: transparent;
-            border: none;
-            color: #0D4BA0;
-            cursor: pointer;
-            text-decoration: underline;
-            margin: 0 5px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .minor-options button:hover {
-            text-decoration: none;
-        }
-    </style>
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="/static/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <div id="background"></div>
     <div id="top-bar">
-        <div id="home-link"><a href="{{ url_for('home') }}">Home</a></div>
+        <div class="home-link"><a href="{{ url_for('home') }}"><i class="fas fa-home"></i></a></div>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
-    <form action="{{ url_for('add_faculty')}}" method="post">
-        <button class="container">
-            Add Faculty
-        </button>
-    </form>
+    <div class="welcome-message"></div>
+    <div class="button-container">
+        <button type="button" onclick="window.location.href = '{{ url_for('add_faculty')}}'" class="redirect-button">Add Faculty</button>
+    </div>
 </body>
 </html>

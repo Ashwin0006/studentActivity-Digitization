@@ -3,46 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Student Login</title>
+    <link rel="stylesheet" href="/static/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome CSS -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-            color: #000000;
-        }
-
-        #top-bar {
-            background-color: #0D4BA0;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        #home-link {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 20px;
-        }
-
-        #logo {
-            width: 120px;
-            height: 75px;
-            margin-right: 20px;
-        }
-
         h2 {
             color: #0D4BA0;
             margin-top: 50px;
         }
-
+        
         .container {
             width: 100%;
             max-width: 400px;
@@ -82,25 +51,22 @@
             text-align: center;
         }
 
-        .minor-options button {
-            background-color: transparent;
-            border: none;
+        .minor-options a {
             color: #0D4BA0;
-            cursor: pointer;
-            text-decoration: underline;
-            margin: 0 5px;
+            text-decoration: none;
             font-size: 16px;
             font-weight: bold;
         }
 
-        .minor-options button:hover {
-            text-decoration: none;
+        .minor-options a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <div id="background"></div>
     <div id="top-bar">
-        <div id="home-link"><a href="{{ url_for('home') }}">Home</a></div>
+        <div class="home-link"><a href="{{ url_for('home') }}"><i class="fas fa-home"></i></a></div>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
     <div class="container">
@@ -111,8 +77,8 @@
             <input type="submit" value="Login">
         </form>
         <div class="minor-options">
-            <button onclick="window.location.href = '{{ url_for('faculty_login')}}'">Faculty Login</button> | 
-            <button onclick="window.location.href = '{{ url_for('student_login')}}'">Student Login</button>
+            <a href="{{ url_for('student_login') }}">Student Login</a> | 
+            <a href="{{ url_for('faculty_login') }}">Faculty Login</a>
         </div>
     </div>
 </body>

@@ -12,7 +12,6 @@ db_config = {
 connection = mysql.connector.connect(**db_config)
 cursor = connection.cursor()
 
-
 app = Flask(__name__)
 
 @app.route("/")
