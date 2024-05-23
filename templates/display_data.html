@@ -111,12 +111,23 @@
 
     <table border="1">
         {% for row in table_data %}
-            <tr{% if loop.index == 1 %} class="header-row"{% endif %}>
+            <tr{% if loop.index == 1 %} class="header-row"{% endif %} onclick="generateReport(this)">
                 {% for cell in row %}
                     <td>{{ cell }}</td>
                 {% endfor %}
             </tr>
         {% endfor %}
     </table>
+
+    <script>
+        function generateReport(row){
+            var cells = row.getElementsByTagName("td");
+            var details = [];
+            for (var i = 0; i < cells.length; i++) {
+                details.push(cells[i].innerText);
+            }
+            console.log(details);
+        }
+    </script>
 </body>
 </html>

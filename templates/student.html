@@ -48,9 +48,9 @@
         }
 
         form {
-            max-width: 500px;
+            max-width: 480px;
             width: 90%;
-            margin: 150px auto 50px;
+            margin-left : 450px;
             background-color: #f0f6f9;
             padding: 2em;
             border-radius: 20px;
@@ -111,14 +111,11 @@
 </head>
 <body>
     <div id="top-bar">
-        <div id="home-link"><a href="#" style="color: white; text-decoration: none;">Home</a></div>
+        <div id="home-link"><a href="{{ url_for('home') }}" style="color: white; text-decoration: none;">Home</a></div>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
     <h2>Student details</h2>
-    <form action="#" method="POST" enctype="multipart/form-data">
-        <label for="registration_number">Registration Number:</label>
-        <input type="text" id="registration_number" name="registration_number" required>
-
+    <form action="/submitStudentDetails" method="POST" enctype="multipart/form-data">
         <label for="student_name">Student Name:</label>
         <input type="text" id="student_name" name="student_name" required>
 
@@ -137,8 +134,11 @@
         <label for="event_name">Event Name:</label>
         <input type="text" id="event_name" name="event_name" required>
 
-        <label for="institution">Institution:</label>
-        <input type="text" id="institution" name="institution" required>
+        <label for="tech_nonTech">Tech/Non-Tech:</label>
+        <select id="tech_nonTech" name="tech_nonTech" required>
+            <option value="Technical">Technical Event</option>
+            <option value="Non-Technical">Non-Technical Event</option>
+        </select>
 
         <label for="proof">Proof (Upload Image):</label>
         <input type="file" id="proof" name="proof" accept="image/*" required>

@@ -12,17 +12,44 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
         }
 
+        #top-bar {
+            background-color: #0D4BA0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        #home-link {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        #logo {
+            width: 120px;
+            height: 75px;
+            margin-right: 20px;
+        }
+
         .error-container {
             text-align: center;
-            padding: 20px;
+            padding : 20px;
+            height: 100px;
             border-radius: 10px;
             background-color: #9fffe9;
+            margin-top : 200px;
+            margin-left: 500px;
+            margin-right: 500px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
@@ -33,18 +60,18 @@
         }
 
         .error-message {
+            margin-top: 40px;
             font-size: 1.5em;
             color: #4e48ff;
         }
 
-        .error-container img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
+    <div id="top-bar">
+        <div id="home-link"><a href="{{ url_for('home') }}">Home</a></div>
+        <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
+    </div>
     <div class="error-container">
         <div class="error-message">{{ error_message }}</div>
     </div>

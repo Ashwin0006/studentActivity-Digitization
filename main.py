@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import mysql.connector
+import fpdf
+import os
 
 # Initialize the database!
 db_config = {
@@ -139,6 +141,38 @@ def faculty_added():
     cursor.execute(f"INSERT INTO USERS VALUES ('{username}', '{password}')")
     cursor.execute("commit")
     return render_template("admin_home.html")
+
+@app.route("/submitStudentDetails", methods=["POST", "GET"])
+def student_details_add():
+    UPLOAD_FOLDER = 'proofs'
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
+
+
+    award_name = request.form["award_name"]
+    team = request.form["team_or_individual"]
+    name = request.form["student_name"]
+    level = request.form["level"]
+    event_name = request.form["event_name"]
+    month_year = request.form["month_year"]
+    proof = request.files["proof"]
+    available = "YES"
+    tech = request.form["tech_nonTech"]
+
+    if proof and proof.filename != '':
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], proof.filename)
+        proof.save(file_path)
+
+    year, month = month_year.split("-")
+    query = f"INSERT INTO AWARDS VALUES('{award_name}', '{team}', '{name}', '{level}', '{event_name}', '{month}', '{year}', '{proof.filename}', '{available}', '{tech}')"
+    cursor.execute(query)
+    cursor.execute("commit")
+    print(award_name, team, name, level, event_name, month_year, proof, available, tech)
+
+    return render_template("error.html", error_message="Details Upload Successful!")
+
+
     
 if __name__ == "__main__":
     app.run(debug=True)
