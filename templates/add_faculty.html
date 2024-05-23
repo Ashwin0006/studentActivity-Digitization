@@ -3,41 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Add Faculty</title>
+    <link rel="stylesheet" href="/static/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome CSS -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-            color: #000000;
-        }
-
-        #top-bar {
-            background-color: #0D4BA0;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        #home-link {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 20px;
-        }
-
-        #logo {
-            width: 120px;
-            height: 75px;
-            margin-right: 20px;
-        }
-
         h2 {
             color: #0D4BA0;
             margin-top: 50px;
@@ -99,12 +68,13 @@
     </style>
 </head>
 <body>
+    <div id="background"></div>
     <div id="top-bar">
-        <div id="home-link"><a href="{{ url_for('home') }}">Home</a></div>
+        <div class="home-link"><a href="{{ url_for('home') }}"><i class="fas fa-home"></i></a></div>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
     <div class="container">
-        <h2>Enter Details to add Faculty</h2>
+        <h2>Enter Details to add new faculty</h2>
         <form action="{{url_for('faculty_added')}}" method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>

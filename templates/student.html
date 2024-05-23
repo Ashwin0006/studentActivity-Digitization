@@ -3,49 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Award Details</title>
+    <title>Add details</title>
+    <link rel="stylesheet" href="/static/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
-        }
-
-        #top-bar {
-            background-color: #0D4BA0;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            height: 80px;
-            width: 100%;
-            z-index: 999;
-            top: 0;
-            left: 0;
-        }
-
-        #home-link {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 20px;
-        }
-
-        #logo {
-            width: 120px;
-            height: 75px;
-            margin-right: 20px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 100px;
-            color: #0D4BA0;
-        }
 
         form {
             max-width: 480px;
@@ -54,7 +15,7 @@
             background-color: #f0f6f9;
             padding: 2em;
             border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.903);
         }
 
         label {
@@ -107,9 +68,14 @@
         input[type="submit"]:hover {
             background-color: #256eb1;
         }
+        #form-container {
+            max-height: 500px; /* Set the maximum height as per your requirement */
+            overflow-y: auto; /* Make it scrollable */
+        }
     </style>
 </head>
 <body>
+    <div id="background"></div>
     <div id="top-bar">
         <div id="home-link"><a href="{{ url_for('home') }}" style="color: white; text-decoration: none;">Home</a></div>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">

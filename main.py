@@ -7,13 +7,12 @@ import os
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'Ash123',
+    'password': 'mysql',
     'database': 'digitization',
     'auth_plugin': 'mysql_native_password' 
 }
 connection = mysql.connector.connect(**db_config)
 cursor = connection.cursor()
-
 
 app = Flask(__name__)
 
