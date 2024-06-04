@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        #top-bar {
+            background-color: rgba(13, 75, 160, 0.8);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            border-radius: 2%;
+        }
+
+        .home-link {
+            margin-left: 20px;
+        }
+
+        .home-link a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 28px; /* Adjust icon size */
+        }
+
+        .home-link a:hover {
+            color: #f0f0f0; /* Change color on hover if needed */
+        }
+
+        .flex-break{
+            flex: 1 0 100%
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image:linear-gradient(to right, rgb(116, 149, 250), rgb(255, 242, 242), rgb(187, 255, 248));
+        }
+        .enclosure{
+            display : flex;
+            margin-top : 20px;
+        }
+        .profile {
+            flex: 0 0 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius:2%;
+            height : 500px;
+            margin-left : 20px;
+            margin-right : 20px;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .profile h2 {
+            margin: 10px 0 5px;
+        }
+        .profile p {
+            margin: 5px 0;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            border-radius: 2%;
+            background-color: rgba(97, 249, 199, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div id="top-bar">
+        <div id="home-link"><a href="{{ url_for('home') }}" style="color: white; text-decoration: none;">Home</a></div>
+        <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
+    </div>
+
+    <div class="enclosure">
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <h2>Student 1</h2>
+            <p>Year II</p>
+            <p>3122225002014</p>
+            <p>--------------------------------------</p>
+            <br>
+            <p>✏️ Computer Science</p>
+            <p>✏️ Chess</p>
+        </div>
+        <div class="content">
+            <h1>Achivements</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius nunc id magna gravida, et scelerisque urna hendrerit. Curabitur tincidunt diam ac nunc malesuada, eget volutpat erat aliquet. Fusce non lacus ut eros tristique aliquam. Nulla facilisi. Nam dictum metus vel turpis ultricies, ac mollis est ullamcorper.
+            </p>
+            <p>
+                Vestibulum vitae justo sit amet lorem ultricies facilisis. Nulla facilisi. Curabitur auctor, odio id egestas consequat, eros urna aliquam mi, sit amet varius nisl nunc eget eros. Nulla facilisi. Curabitur lobortis quam in nibh auctor, ut gravida risus faucibus.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

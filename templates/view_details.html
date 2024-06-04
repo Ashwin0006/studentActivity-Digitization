@@ -13,10 +13,10 @@
             width: 100%;
             height: 100%;
             background-image: url('/static/ssn_bg.jpeg');
-            background-size: cover; /* Ensure the background image covers the entire page */
-            background-position: center; /* Center the background image */
-            opacity: 0.825; /* Reduce opacity to half */
-            z-index: -1; /* Place the background behind other content */
+            background-size: cover;
+            background-position: center; 
+            opacity: 0.825; 
+            z-index: -1; 
         }
         #top-bar {
             background-color: rgba(13, 75, 160, 0.8);
@@ -35,11 +35,11 @@
         .home-link a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 28px; /* Adjust icon size */
+            font-size: 28px; 
         }
 
         .home-link a:hover {
-            color: #f0f0f0; /* Change color on hover if needed */
+            color: #f0f0f0; 
         }
 
         #logo {
@@ -73,7 +73,7 @@
             padding: 20px;
             margin: 50px auto;
             border-radius: 10px;
-            background-color: #0d4aa0bf; 
+            background-color: hsla(215, 85%, 34%, 0.6); 
             color: rgb(252, 252, 252);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
@@ -91,11 +91,12 @@
         .input-container select {
             width: calc(100% - 10px);
             padding: 10px;
-            border: none;
-            border-bottom: 2px solid #0D4BA0;
+            border: 2px solid rgba(0, 0, 255, 0.5);
             outline: none;
             font-size: 16px;
             margin-right: 10px;
+            border-radius: 10px;
+            background: rgb(248, 248, 248, 0.6);
         }
         .input-container select {
             width: calc(100% - 10px);
@@ -105,6 +106,7 @@
             top: 10px;
             left: 10px;
             color: #777;
+            font-size: 18px;
             pointer-events: none;
             transition: 0.3s ease all;
         }
@@ -112,18 +114,18 @@
         .input-container input:valid + label {
             top: -15px;
             left: 5px;
-            font-size: 14px;
+            font-size: 15.5px;
             color: #ffffff;
         }
         .input-container select:focus + label,
         .input-container select:valid + label {
             top: -15px;
             left: 5px;
-            font-size: 14px;
+            font-size: 15.5px;
             color: #ffffff;
         }
         .search-button {
-            background-color: #0D4BA0;
+            background-color: rgb(13, 75, 160);
             color: white;
             padding: 14px 20px;
             border: none;
@@ -139,6 +141,50 @@
         .search-button:hover {
             background-color: #0D4BA0;
         }
+
+        #scroll-container {
+            border: none;
+            border-radius: 5px;
+            height: 100px; 
+            overflow: hidden;
+        }
+
+        #scroll-text {
+            height: 100%;
+            color: aquamarine;
+            text-align: center;
+
+            -moz-transform: translateY(100%);
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+
+            -moz-animation: my-animation 5s linear infinite;
+            -webkit-animation: my-animation 5s linear infinite;
+            animation: my-animation 5s linear infinite;
+        }
+
+        @-moz-keyframes my-animation {
+            from { -moz-transform: translateY(100%); }
+            to { -moz-transform: translateY(-100%); }
+        }
+
+        @-webkit-keyframes my-animation {
+            from { -webkit-transform: translateY(100%); }
+            to { -webkit-transform: translateY(-100%); }
+        }
+
+        @keyframes my-animation {
+            from {
+                -moz-transform: translateY(100%);
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+            }
+            to {
+                -moz-transform: translateY(-100%);
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -149,29 +195,34 @@
     </div>
     <form method="post" action="{{ url_for('search') }}">
         <div class="bordered-box">
-            <centre>
-                <h2 style="color: #ffffff;">
-                    Latest Achivements
-                </h1>
-            </centre>
-            <p>{{ latest_1 }}</p>
-            <p>{{ latest_2 }}</p>
+            <center>
+                <h2 style="color: #ffca56;">
+                    Latest Achievements
+                </h2>
+            </center>
+            <div id="scroll-container">
+                <div id="scroll-text">
+                    <p>{{ latest_1 }}</p>
+                    <p>{{ latest_2 }}</p>
+                    <p>{{ latest_3 }}</p>
+                </div>
+            </div>
         </div>
         <div class="input-container">
             <input type="text" id="student_name" name="student_name">
-            <label for="">Name of Student</label>
+            <label for="student_name">Name of Student</label>
         </div>
         <div class="input-container">
             <input type="text" id="award_name" name="award_name">
-            <label for="">Award Name</label>
+            <label for="award_name">Award Name</label>
         </div>
         <div class="input-container">
             <input type="text" id="keyword" name="keyword">
-            <label for="">Keyword</label>
+            <label for="keyword">Keyword</label>
         </div>
         <div class="input-container">
             <input type="text" id="year" name="year">
-            <label for="">Year</label>
+            <label for="year">Year</label>
         </div>
         <div class="input-container">
             <select id="level" name="level">
@@ -180,7 +231,7 @@
                 <option value="State">State</option>
                 <option value="Inter-University">Inter-University</option>
             </select>
-            <label for="">Competition Level</label>
+            <label for="level">Competition Level</label>
         </div>
         <div class="input-container">
             <select id="tech" name="tech">
@@ -189,7 +240,7 @@
                 <option value="Non Tech">Non-Technical</option>
                 <option value="value2">Sports</option>
             </select>
-            <label for="">Category</label>
+            <label for="tech">Category</label>
         </div>
         <button class="search-button" type="submit">Search</button>
     </form>

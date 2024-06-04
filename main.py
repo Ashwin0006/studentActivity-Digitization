@@ -7,7 +7,7 @@ import os
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'mysql',
+    'password': 'Ash123',
     'database': 'digitization',
     'auth_plugin': 'mysql_native_password' 
 }
@@ -27,18 +27,20 @@ def view_details():
                    FROM awards
                    WHERE year is not null 
                    ORDER BY year desc
-                   LIMIT 2""")
+                   LIMIT 3""")
     data_latest = cursor.fetchall()
     latest_1 = f"{data_latest[0][0]} has won {data_latest[0][1]} in the event {data_latest[0][2]} on {data_latest[0][3]}, {data_latest[0][4]} which is a {data_latest[0][5]} competition!"
     latest_2 = f"{data_latest[1][0]} has won {data_latest[1][1]} in the event {data_latest[1][2]} on {data_latest[1][3]}, {data_latest[1][4]} which is a {data_latest[1][5]} competition!"
-
+    latest_3 = f"{data_latest[2][0]} has won {data_latest[2][1]} in the event {data_latest[2][2]} on {data_latest[2][3]}, {data_latest[2][4]} which is a {data_latest[2][5]} competition!"
     cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
                    FROM awards 
                    ORDER BY year
                    LIMIT 10""")
     data_acheivements = cursor.fetchall()
 
-    return render_template("view_details.html", latest_1 = latest_1, latest_2 = latest_2, data_rows = data_acheivements)
+    return render_template("view_details.html", latest_1 = latest_1, 
+                           latest_2 = latest_2, latest_3 = latest_3, 
+                           data_rows = data_acheivements)
 
 @app.route("/search", methods=["POST", "GET"])
 def search():
@@ -73,10 +75,10 @@ def search():
         if competition_level:
             query += f" AND competition_level LIKE '%{competition_level}%'"
         if tech:
-            if tech == "Non Tech":    
-                query += f" AND tech = 'Non Tech'"
-            else:
+            if tech == "Tech":    
                 query += f" AND tech = 'Tech'"
+            else:
+                query += f" AND tech = 'Non Tech'"
 
     print(query)
     cursor.execute(query)
