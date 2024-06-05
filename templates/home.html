@@ -13,7 +13,7 @@
             padding-right: 17px;
             padding-top: 30px;
             padding-bottom: 10px;
-            height: 300px;
+            height: 350px;
             width: 300px;
             margin-top: 17px;
             border-radius: 10px;;
@@ -29,13 +29,16 @@
         .enclosure button{
             background-image: linear-gradient(to right, rgb(125, 125, 255, 0.6), rgb(99, 252, 252, 0.7));
         }
+        .enclosure:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
     <div id="background"></div>
     <div id="top-bar">
         <div class="home-link"><a href="{{ url_for('home') }}"><i class="fas fa-home"></i></a></div>
-        <h1>Student Extracurricular Activities</h1>
+        <h1 style="margin-left: 65px; margin-bottom: 40px;">Student Extracurricular Activities</h1>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
     <div class="welcome-message"></div>
