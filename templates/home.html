@@ -6,19 +6,55 @@
     <title>SSN Student Extracurricular Activities</title>
     <link rel="stylesheet" href="/static/styles.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .enclosure{
+            background-color: rgba(255, 255, 255, 0.7);
+            padding-left: 17px;
+            padding-right: 17px;
+            padding-top: 30px;
+            padding-bottom: 10px;
+            height: 300px;
+            width: 300px;
+            margin-top: 17px;
+            border-radius: 10px;;
+        }
+        .enclosure img{
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 40px;
+        
+        }
+        .enclosure button{
+            background-image: linear-gradient(to right, rgb(125, 125, 255, 0.6), rgb(99, 252, 252, 0.7));
+        }
+    </style>
 </head>
 <body>
     <div id="background"></div>
     <div id="top-bar">
         <div class="home-link"><a href="{{ url_for('home') }}"><i class="fas fa-home"></i></a></div>
+        <h1>Student Extracurricular Activities</h1>
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
-    <h1>SSN Student Extracurricular Activities</h1>
     <div class="welcome-message"></div>
     <div class="button-container">
-        <button type="button" onclick="window.location.href = '{{ url_for('student_login')}}'" class="redirect-button">Student Login</button>
-        <button type="button" onclick="window.location.href = '{{ url_for('faculty_login')}}'" class="redirect-button">Faculty Login</button>
-        <button type="button" onclick="window.location.href = '{{ url_for('admin_login')}}'" class="redirect-button">Admin Login</button>
+        <div class="enclosure">
+            <img src="/static/student_stamp.png">
+            <br>
+            <button type="button" onclick="window.location.href = '{{ url_for('student_login')}}'" class="redirect-button">Student Login</button>
+        </div>
+        <div class="enclosure">
+            <img src="/static/teacher_stamp.png">
+            <br>
+            <button type="button" onclick="window.location.href = '{{ url_for('faculty_login')}}'" class="redirect-button">Faculty Login</button>
+        </div>
+        <div class="enclosure">
+            <img src="/static/admin_stamp.jpg">
+            <br>
+            <button type="button" onclick="window.location.href = '{{ url_for('admin_login')}}'" class="redirect-button">Admin Login</button>
+        </div>
     </div>
 </body>
 </html>
