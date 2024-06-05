@@ -74,11 +74,12 @@
         <img id="logo" src="/static/ssn_logo_white.png" alt="SSN Logo">
     </div>
     <div class="container">
-        <h2>Enter Details to add new faculty</h2>
-        <form action="{{url_for('faculty_added')}}" method="post">
+        <h2>Enter Details to add new Student</h2>
+        <form action="{{url_for('student_added')}}" method="post">
             <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="regno" placeholder="Register Number" required>
             <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Add Faculty">
+            <input type="submit" value="Add Student">
         </form>
     </div>
 </body>

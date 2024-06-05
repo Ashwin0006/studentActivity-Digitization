@@ -71,12 +71,75 @@
         .profile p {
             margin: 5px 0;
         }
+        
+        #logo {
+            width: 120px;
+            height: 75px;
+            margin-right: 20px;
+        }
         .content {
             flex: 1;
+            height : 280px;
             padding: 20px;
             border-radius: 2%;
-            background-color: rgba(97, 249, 199, 0.4);
+            /* background-color: rgba(97, 249, 199, 0.3); */
+            background-image: linear-gradient(rgba(97, 249, 199, 0.3), rgba(255, 189, 103, 0.3));
         }
+        #scroll-container {
+            border: none;
+            border-radius: 5px;
+            height: 100px; 
+            overflow: hidden;
+        }
+
+        #scroll-text {
+            height: 100%;
+            color: rgb(0, 0, 0);
+            text-align: center;
+
+            -moz-transform: translateY(100%);
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+
+            -moz-animation: my-animation 5s linear infinite;
+            -webkit-animation: my-animation 5s linear infinite;
+            animation: my-animation 5s linear infinite;
+        }
+
+        @-moz-keyframes my-animation {
+            from { -moz-transform: translateY(100%); }
+            to { -moz-transform: translateY(-100%); }
+        }
+
+        @-webkit-keyframes my-animation {
+            from { -webkit-transform: translateY(100%); }
+            to { -webkit-transform: translateY(-100%); }
+        }
+
+        @keyframes my-animation {
+            from {
+                -moz-transform: translateY(100%);
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+            }
+            to {
+                -moz-transform: translateY(-100%);
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+        }
+
+        .buttonSpace{
+            margin-top:60px;
+        }
+        .buttonSpace button{
+            border-radius: 10px;
+            width: 200px;
+            height:70px;
+            background-image:linear-gradient(to right, aquamarine, rgb(90, 255, 90));
+        }
+
+
     </style>
 </head>
 <body>
@@ -87,23 +150,32 @@
 
     <div class="enclosure">
         <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
-            <h2>Student 1</h2>
-            <p>Year II</p>
-            <p>3122225002014</p>
+            <img src="/static/profile_bg.png" alt="Profile Picture">
+            <h2>{{ name }}</h2>
+            <p>{{ regno }}</p>
             <p>--------------------------------------</p>
             <br>
-            <p>✏️ Computer Science</p>
-            <p>✏️ Chess</p>
         </div>
-        <div class="content">
-            <h1>Achivements</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius nunc id magna gravida, et scelerisque urna hendrerit. Curabitur tincidunt diam ac nunc malesuada, eget volutpat erat aliquet. Fusce non lacus ut eros tristique aliquam. Nulla facilisi. Nam dictum metus vel turpis ultricies, ac mollis est ullamcorper.
-            </p>
-            <p>
-                Vestibulum vitae justo sit amet lorem ultricies facilisis. Nulla facilisi. Curabitur auctor, odio id egestas consequat, eros urna aliquam mi, sit amet varius nisl nunc eget eros. Nulla facilisi. Curabitur lobortis quam in nibh auctor, ut gravida risus faucibus.
-            </p>
+        <div>
+            <div class="content">
+                <center>
+                    <h1 style="color: rgb(255, 0, 0);">Achivements</h1>
+                    <h2 style="color: dodgerblue;">Latest from your college !</h2>
+                </center>
+                <div id="scroll-container">
+                    <div id="scroll-text">
+                        <p>{{ latest1 }}</p>
+                        <p>{{ latest2 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonSpace">
+                <form action="{{ url_for('add_student_details' )}}" method="post">
+                    <center>
+                        <button>Submit Achivement Details</button>
+                    </center>
+                </form>
+            </div>
         </div>
     </div>
 

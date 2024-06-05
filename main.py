@@ -101,14 +101,37 @@ def admin_login():
 
 @app.route("/student", methods=['POST', 'GET'])
 def student():
-    return render_template("student.html")
+    name = request.form["username"]
+    password = request.form["password"]
+
+    query = f"SELECT * FROM students"
+    cursor.execute(query)
+
+    data = cursor.fetchall()
+
+    print(data)
+    for d in data:
+        if(d[0] == name and d[2] == password):   
+            cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
+                   FROM awards
+                   WHERE year is not null 
+                   ORDER BY year desc
+                   LIMIT 3""")
+            data_latest = cursor.fetchall()
+            latest_1 = f"{data_latest[0][0]} has won {data_latest[0][1]} in the event {data_latest[0][2]} on {data_latest[0][3]}, {data_latest[0][4]} which is a {data_latest[0][5]} competition!"
+            latest_2 = f"{data_latest[1][0]} has won {data_latest[1][1]} in the event {data_latest[1][2]} on {data_latest[1][3]}, {data_latest[1][4]} which is a {data_latest[1][5]} competition!"
+            latest_3 = f"{data_latest[2][0]} has won {data_latest[2][1]} in the event {data_latest[2][2]} on {data_latest[2][3]}, {data_latest[2][4]} which is a {data_latest[2][5]} competition!"
+            return render_template("student_home.html", name = name, regno = d[1], latest1 = latest_1, latest2 = latest_2)
+            # return render_template("student.html")
+    
+    return render_template("error.html")
 
 @app.route("/faculty_home", methods=['POST', 'GET'])
 def faculty_home():
     user_name = request.form["username"]
     password = request.form["password"]
 
-    cursor.execute("SELECT * FROM users")
+    cursor.execute("SELECT * FROM teachers")
     data_pairs = cursor.fetchall()
 
     for data in data_pairs:
@@ -139,7 +162,7 @@ def faculty_added():
     username = request.form["username"]
     password = request.form["password"]
 
-    cursor.execute(f"INSERT INTO USERS VALUES ('{username}', '{password}')")
+    cursor.execute(f"INSERT INTO TEACHERS VALUES ('{username}', '{password}')")
     cursor.execute("commit")
     return render_template("admin_home.html")
 
@@ -173,6 +196,23 @@ def student_details_add():
 
     return render_template("error.html", error_message="Details Upload Successful!")
 
+@app.route("/add_student", methods=["POST", "GET"])
+def add_student():
+    return render_template("add_student.html")
+
+@app.route("/student_added", methods=["POST", "GET"])
+def student_added():
+    username = request.form["username"]
+    password = request.form["password"]
+    regno = request.form["regno"]
+
+    cursor.execute(f"INSERT INTO STUDENTS VALUES ('{username}', '{regno}', '{password}')")
+    cursor.execute("commit")
+    return render_template("admin_home.html")
+
+@app.route("/add_student_details", methods=["POST", "GET"])
+def add_student_details():
+    return render_template("student.html")
 
     
 if __name__ == "__main__":
