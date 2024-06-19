@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, jsonify, render_template, request, redirect, send_file
 import mysql.connector
-import fpdf
 import os
 
-# Initialize the database!
+app = Flask(__name__)
+
+# Initialize the database connection and cursor
 db_config = {
     'host': 'localhost',
     'user': 'root',
@@ -12,9 +13,7 @@ db_config = {
     'auth_plugin': 'mysql_native_password' 
 }
 connection = mysql.connector.connect(**db_config)
-cursor = connection.cursor()
-
-app = Flask(__name__)
+cursor = connection.cursor(buffered=True)  # Use buffered cursor to fetch all rows at once
 
 @app.route("/")
 def home():
@@ -22,7 +21,7 @@ def home():
 
 @app.route("/view_details", methods=['POST', 'GET'])
 def view_details():
-    # Latest Achievements!
+    # Latest Achievements
     cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
                    FROM awards
                    WHERE year is not null 
@@ -32,21 +31,22 @@ def view_details():
     latest_1 = f"{data_latest[0][0]} has won {data_latest[0][1]} in the event {data_latest[0][2]} on {data_latest[0][3]}, {data_latest[0][4]} which is a {data_latest[0][5]} competition!"
     latest_2 = f"{data_latest[1][0]} has won {data_latest[1][1]} in the event {data_latest[1][2]} on {data_latest[1][3]}, {data_latest[1][4]} which is a {data_latest[1][5]} competition!"
     latest_3 = f"{data_latest[2][0]} has won {data_latest[2][1]} in the event {data_latest[2][2]} on {data_latest[2][3]}, {data_latest[2][4]} which is a {data_latest[2][5]} competition!"
+
+    # All Achievements
     cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
                    FROM awards 
                    ORDER BY year
                    LIMIT 10""")
-    data_acheivements = cursor.fetchall()
+    data_achievements = cursor.fetchall()
 
-    return render_template("view_details.html", latest_1 = latest_1, 
-                           latest_2 = latest_2, latest_3 = latest_3, 
-                           data_rows = data_acheivements)
+    return render_template("view_details.html", latest_1=latest_1, 
+                                            latest_2=latest_2, 
+                                            latest_3=latest_3, 
+                                            data_rows=data_achievements)
 
 @app.route("/search", methods=["POST", "GET"])
 def search():
     data = request.form
-    print(data)
-    # Extract search criteria from the JSON object
     student_name = data.get("student_name")
     award_name = data.get("award_name")
     keyword = data.get("keyword")
@@ -54,9 +54,8 @@ def search():
     competition_level = data.get("level")
     tech = data.get("tech")
 
-    
     if keyword:
-        query = "SELECT * FROM awards WHERE 1=0"
+        query = "SELECT award_name, student_name, team, competition_level, event_name, month, year, tech FROM awards WHERE 1=0"
         query += f" OR student_name LIKE '%{keyword}%'"
         query += f" OR award_name LIKE '%{keyword}%'"
         query += f" OR tech LIKE '%{keyword}%'"
@@ -65,7 +64,7 @@ def search():
             query += f" OR event_name = {keyword}"
 
     else:
-        query = "SELECT * FROM awards WHERE 1=1"
+        query = "SELECT award_name, student_name, team, competition_level, event_name, month, year, tech FROM awards WHERE 1=1"
         if student_name:
             query += f" AND student_name LIKE '%{student_name}%'"
         if award_name:
@@ -83,9 +82,37 @@ def search():
     print(query)
     cursor.execute(query)
     data_table = cursor.fetchall()
-    data_table.insert(0, ("AWARD NAME", "TEAM/INDIVIDUAL", "STUDENT NAME", "LEVEL", "COMPETITION NAME", "MONTH", "YEAR", "PROOF", "AVAILABILITY", "CATEGORY"))
+    data_table.insert(0, ("AWARD NAME", "STUDENT NAME", "TEAM/INDIVIDUAL", "LEVEL", "COMPETITION NAME", "MONTH", "YEAR", "CATEGORY"))
 
     return render_template("display_data.html", table_data=data_table)
+
+@app.route('/get_proof/<path:id>/<path:extra>/<path:month>/<path:year>')
+def get_proof(id, extra, month, year):
+    name = id 
+    query = f"SELECT proof FROM awards WHERE student_name like '%{name}%' and month = '{month}' and year = {year}"
+    print(query)
+    cursor.execute(query)
+    row = cursor.fetchone()
+    print("proof :", row)
+
+    if row:
+        pdf_path = row[0]
+        return jsonify({'pdf_path': pdf_path})
+    else:
+        return jsonify({'error': 'File not found'}), 404
+
+@app.route('/view_pdf/<path:pdf_path>')
+def view_pdf(pdf_path):
+    try:
+        # Ensure the file exists before attempting to send it
+        if not os.path.exists(pdf_path):
+            raise FileNotFoundError(f"The file {pdf_path} does not exist.")
+        
+        return send_file(pdf_path, as_attachment=False)
+    except FileNotFoundError as e:
+        return jsonify({'error': str(e)}), 404
+    except Exception as e:
+        return jsonify({'error': 'An unexpected error occurred: ' + str(e)}), 500
 
 @app.route("/student_login", methods=['POST', 'GET'])
 def student_login():
@@ -104,14 +131,13 @@ def student():
     name = request.form["username"]
     password = request.form["password"]
 
-    query = f"SELECT * FROM students"
+    query = "SELECT * FROM students"
     cursor.execute(query)
-
     data = cursor.fetchall()
 
     print(data)
     for d in data:
-        if(d[0] == name and d[2] == password):   
+        if d[0] == name and d[2] == password:   
             cursor.execute("""SELECT student_name, award_name, event_name, month, year, competition_level 
                    FROM awards
                    WHERE year is not null 
@@ -121,8 +147,7 @@ def student():
             latest_1 = f"{data_latest[0][0]} has won {data_latest[0][1]} in the event {data_latest[0][2]} on {data_latest[0][3]}, {data_latest[0][4]} which is a {data_latest[0][5]} competition!"
             latest_2 = f"{data_latest[1][0]} has won {data_latest[1][1]} in the event {data_latest[1][2]} on {data_latest[1][3]}, {data_latest[1][4]} which is a {data_latest[1][5]} competition!"
             latest_3 = f"{data_latest[2][0]} has won {data_latest[2][1]} in the event {data_latest[2][2]} on {data_latest[2][3]}, {data_latest[2][4]} which is a {data_latest[2][5]} competition!"
-            return render_template("student_home.html", name = name, regno = d[1], latest1 = latest_1, latest2 = latest_2)
-            # return render_template("student.html")
+            return render_template("student_home.html", name=name, regno=d[1], latest1=latest_1, latest2=latest_2)
     
     return render_template("error.html")
 
@@ -135,10 +160,10 @@ def faculty_home():
     data_pairs = cursor.fetchall()
 
     for data in data_pairs:
-        if(data[0] == user_name and data[1] == password):
+        if data[0] == user_name and data[1] == password:
             return render_template("faculty_home.html")
     
-    return render_template("error.html", error_message = "Invalid Login")
+    return render_template("error.html", error_message="Invalid Login")
 
 @app.route("/admin_home", methods=["POST", "GET"])
 def admin_home():
@@ -149,9 +174,10 @@ def admin_home():
     password = request.form["password"]
 
     for data in data_admin:
-        if(data[0] == username and data[1] == password):
+        if data[0] == username and data[1] == password:
             return render_template("admin_home.html")
-    return render_template("error.html", error_message = "Invalid Login")
+    
+    return render_template("error.html", error_message="Invalid Login")
 
 @app.route("/add_faculty", methods=['POST', 'GET'])
 def add_faculty():
@@ -172,7 +198,6 @@ def student_details_add():
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     if not os.path.exists(UPLOAD_FOLDER):
         os.makedirs(UPLOAD_FOLDER)
-
 
     award_name = request.form["award_name"]
     team = request.form["team_or_individual"]
@@ -214,6 +239,6 @@ def student_added():
 def add_student_details():
     return render_template("student.html")
 
-    
 if __name__ == "__main__":
     app.run(debug=True)
+

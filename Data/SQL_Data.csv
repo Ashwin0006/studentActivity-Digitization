@@ -1,16 +1,16 @@
-Name of the award/ medal,Team / Individual,Name of the student,Inter-university / State / National / International,Name of the event,Month,Month and Year,Proof,Availability,Tech/Non Tech
-Badminton - Participated,Team,V.Shasvat Vijay ( II Yr /IT ),State Level,Tamil Nadu State Senior Ranking Badminton tournament ,Aug,2022,5.3.1_1,,Non Tech
-Cricket - Participated,Team,M.Mithul raj  (III Yr / IT) ,State Level,TNCA 1st  division league match,Aug,2022,5.3_1_2,,Non Tech
-2022 - Men Category Badminton - Third Place,Team,V.Shasvat Vijay ( II Yr /IT )    ,State Level,Seetharaman & Lakshmiammal  Memorial Trophy  2022,Sep,2022,5.3_1_3,,Non Tech
+award_name,team, student_name,competition_level,event_name,month,year,proof,availability,tech
+Badminton - Participated,Team,V.Shasvat Vijay ( II Yr /IT ),State Level,Tamil Nadu State Senior Ranking Badminton tournament ,Aug,2022,"proofs_available\Students Achivements\Students Achivements\2022 - 2023\hrithik,rithik_nov2022badminton.pdf",,Non Tech
+Cricket - Participated,Team,M.Mithul raj  (III Yr / IT) ,State Level,TNCA 1st  division league match,Aug,2022,proofs_available\Students Achivements\Students Achivements\2022 - 2023\mithul raj.pdf,,Non Tech
+2022 - Men Category Badminton - Third Place,Team,V.Shasvat Vijay ( II Yr /IT )    ,State Level,Seetharaman & Lakshmiammal  Memorial Trophy  2022,Sep,2022,proofs_available\Students Achivements\Students Achivements\2022 - 2023\shaswat vijay.pdf,,Non Tech
 2022 - Men Category Badminton - Third Place,Team,B.SIDHARTH ( IV YR),State Level,Seetharaman & Lakshmiammal  Memorial Trophy  2022,Sep,2022,5.3_1_3,,Non Tech
-Badminton - Third Place,Team,U.DUVICKSHA(IV YR) ,State Level,Seetharaman & Lakshmiammal  Memorial Trophy - 2022,Sep,2022,5.3_1_4,yes,Non Tech
+Badminton - Third Place,Team,U.DUVICKSHA(IV YR) ,State Level,Seetharaman & Lakshmiammal  Memorial Trophy - 2022,Sep,2022,proofs_available\Students Achivements\Students Achivements\2022 - 2023\diviksha.pdf,yes,Non Tech
 Tennis(M)  tournament  - Silver medals ,Team,AJAY MURALI (IV YR)            ,Inter-university,Tennis(M)  tournament   ,Nov,2022,5.3_1_5,,Non Tech
 Tennis(M)  tournament  - Silver medals ,Team,ADITYA R (IV YR),Inter-university,Tennis(M)  tournament   ,Nov,2022,5.3_1_5,,Non Tech
 Women Badminton - Bronze medals  ,Team,U.DUVICKSHA (IV YR) ,Inter-university, Badminton tournament (W),Nov,2022,5.3_1_6,,Non Tech
 Men Badminton tournament - Championship,Team,V.SHASVAT VIJAY ( II Yr /IT ) ,Inter-university, Badminton tournament (M),Nov,2022,5.3_1_7,yes,Non Tech
 Men Badminton tournament - Championship,Team,B.SIDHARTH ( IV YR),Inter-university, Badminton tournament (M),Nov,2022,5.3_1_7,yes,Non Tech
 Men Badminton tournament - Win,Team,B.SIDHARTH ( IV YR) ,Inter-university,Badminton Tournament - Runners trophy  ,Nov,2022,5.3_1_8,yes,Non Tech
-Men Badminton tournament - Win,Team,V.SHASVAT VIJAY ( II YR /IT ),Inter-university,Badminton Tournament - Runners trophy  ,Nov,2022,5.3_1_8,yes,Non Tech
+Men Badminton tournament - Win,Team,V.SHASVAT VIJAY ( II YR /IT ),Inter-university,Badminton Tournament - Runners trophy  ,Nov,2022,proofs_available\Students Achivements\Students Achivements\2022 - 2023\saswat_nov22.pdf,yes,Non Tech
 Women Basketball tournament ,Team,SREESHMA M NAIR (II YR / IT),Inter-university,Basketball Tournament - Runners trophy ,Nov,2022,5.3_1_9,,Non Tech
 Men Chess - Third place,Team,BALASUBRAMANIAM H (I YR  /IT),Inter-university,Chess Tournament - Winners trophy,Nov,2022,5.3_1_10,,Non Tech
 Men Chess - Third place,Team,K.Deepak (III Yr / IT),Inter-university,Chess Tournament - Winners trophy,Nov,2022,5.3_1_10,,Non Tech
@@ -23,12 +23,12 @@ Women Basketball Tournament  - participated,Team,SREESHMA M NAIR (II YR /IT),Int
 Men Squash tournament ,Team,R.ADITHYA SRIRAM ( IV YR / IT),Inter-university,Squash tournament (M),Feb,2023,5.3_1_16,,Non Tech
 Men Squash tournament - participated,Team,R.ADITHYA SRIRAM ( IV YR / IT),Inter-university,Squash tournament (M),Feb,2023,5.3_1_17,yes,Non Tech
 women Chess tournament - Bronze medal,Individual,S.ABIRAMI (IV YR /IT),Inter-university, VASPO 2022,Feb,2023,5.3_1_18,,Non Tech
-Women Chess            –   Winners,Individual,S.ABIRAMI (IV YR /IT)    ,Inter-university,Trophies in the Vibrance Sports ,Feb,2023,5.3_1_19,yes,Non Tech
-Chess(M&W)            –   Winners,Individual,BALASUBRAMANIAM H (I YR  /IT)                                                                 ,Inter-university,Trophies in the Vibrance Sports ,Feb,2023,5.3_1_20,yes,Non Tech
+Women Chess            –   Winners,Individual,S.ABIRAMI (IV YR /IT)    ,Inter-university,Trophies in the Vibrance Sports ,Feb,2023,proofs_available\Students Achivements\Students Achivements\2022 - 2023\abirami 23.pdf,yes,Non Tech
+Chess(M&W)            –   Winners,Individual,BALASUBRAMANIAM H (I YR  /IT)                                                                 ,Inter-university,Trophies in the Vibrance Sports ,Feb,2023,proofs_available\Students Achivements\Students Achivements\2022 - 2023\balasubramanian23.pdf,yes,Non Tech
 Chess(M&W)            –   Winners,Individual,DEEPAK (III Yr / IT) ,Inter-university,Trophies in the Vibrance Sports ,Feb,2023,5.3_1_20,yes,Non Tech
 Men Badminton            - Third Place,Team,B.SIDHARTH ( IV YR)                  ,Inter-university,Trophies in the Vibrance Sports ,Feb,2023,5.3_1_21,yes,Non Tech
 Men Badminton            - Third Place,Team,V.SHASVAT VIJAY ( II YR /IT ),Inter-university,Trophies in the Vibrance Sports ,Feb,2023,5.3_1_21,yes,Non Tech
-Men Tennis                 - Fourth place,Team,AJAY MURALI (IV YR),Inter-university,Trophies in the Vibrance Sports ,Feb,2023,5.3_1_22,yes,Non Tech
+Men Tennis                 - Fourth place,Team,AJAY MURALI (IV YR),Inter-university,Trophies in the Vibrance Sports ,Feb,2023,proofs_available\Students Achivements\Students Achivements\2022 - 2023\ajaymurali_23.pdf,yes,Non Tech
 Men Badminton - Runners,Team,V.Shasvat Vijay ( II Yr /IT ) ,Inter-university,8th  LICET Tournament ,Mar,2023,5.3_1_23,,Non Tech
 Men Badminton - Runners,Team,B.SIDHARTH ( IV YR) ,Inter-university,8th  LICET Tournament ,Mar,2023,5.3_1_23,,Non Tech
 Women Badminton - Runners,Team,U.DUVICKSHA(IV YR),Inter-university,8th  LICET Tournament ,Mar,2023,5.3_1_24,,Non Tech
@@ -56,8 +56,8 @@ Form 3,Individual,Kavya S,Anna University,Anna University sports board ,May,2023
 E. Merwin Scholarship,Individual,Nusaiba Afsheen,International level,IEEECS,Apr,2023,5.3.1_37,yes,Tech
 Apple Swift student challenge Winners ,Individual,Sabesan Bharathi,International level,WWDC 23 Swift Student Challenge,Jun,2023,5.3.1_38,yes,Tech
 Apple Swift student challenge Winners ,Individual,S Karthik Raja,International level,WWDC 23 Swift Student Challenge,Jun,2023,5.3.1_39,yes,Tech
-Winner,Team,HSJ Sahana,State,Tarangini - Winner Eastern Battle of the Bands Trophy,,,5.3.1_40,,Tech
-Winner,Team,HSJ Sahana,State,Acoustix - Winner Western Battle of the Bands,,,5.3.1_41,,Tech
+Winner,Team,HSJ Sahana,State,Tarangini - Winner Eastern Battle of the Bands Trophy,,,proofs_available\Students Achivements\Students Achivements\2022 - 2023\Sahana_May_2022.jpg,,Tech
+Winner,Team,HSJ Sahana,State,Acoustix - Winner Western Battle of the Bands,,,proofs_available\Students Achivements\Students Achivements\2022 - 2023\Sahana_May_2022.jpg,,Tech
 Winner,Team,HSJ Sahana,State,"Winner - Battle of the Bands 
 Libazaar’23",,,5.3.1_42,,Tech
 Winner,Team,HSJ Sahana,State,Winner- Battle of the Bands MITAFEST’23,,,5.3.1_43,,Tech
@@ -78,7 +78,7 @@ Libazaar’23",,,,,Tech
 Winner,Team,HSJ Sahana,State,Winner- Battle of the Bands MITAFEST’23,,,,,Tech
 Winner,Team,HSJ Sahana,State,"Aakriti - Winner Battle of the Bands 
 Vibrance’23",,,,,Tech
-Finalist,Team,Jovitha Sahayaraj,International level,Finalists in IEEE YESIST12,,,,,Tech
-Finalist,Team,Kaviyapriya K,International level,Finalists in IEEE YESIST12,,,,,Tech
+Finalist,Team,Jovitha Sahayaraj,International level,Finalists in IEEE YESIST12,,,proofs_available\Students Achivements\Students Achivements\2022 - 2023\jovitha.pdf,,Tech
+Finalist,Team,Kaviyapriya K,International level,Finalists in IEEE YESIST12,,,proofs_available\Students Achivements\Students Achivements\2022 - 2023\jovitha.pdf,,Tech
 Winner,Individual,M. Mahalakshmi,State,First place in Web Designing at Kurukshetra'23,,,,,Tech
 Secured AIR (All India Rank) 5 ,Team,Saravanan J,International level,IEEXtreme coding Competetion,,,,,Tech

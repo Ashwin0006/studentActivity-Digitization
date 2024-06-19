@@ -71,12 +71,10 @@
             background-color: #4362ff; 
         }
         
-        
         td {
             font-size: 14px;
             color: #333;
         }
-        
 
         tbody tr:hover {
             background-color: #88e3ff;
@@ -120,13 +118,24 @@
     </table>
 
     <script>
-        function generateReport(row){
+        function generateReport(row) {
             var cells = row.getElementsByTagName("td");
-            var details = [];
-            for (var i = 0; i < cells.length; i++) {
-                details.push(cells[i].innerText);
-            }
-            console.log(details);
+            var id = cells[1].innerText;  
+            var month = cells[5].innerText;
+            var year = cells[6].innerText;
+            fetch(`/get_proof/${encodeURIComponent(id)}/${encodeURIComponent(month)}/${encodeURIComponent(year)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        window.open(`/view_pdf/${encodeURIComponent(data.pdf_path)}`, '_blank');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Proof Not Available!");
+                });
         }
     </script>
 </body>
